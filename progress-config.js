@@ -1,0 +1,12 @@
+window.TRAINING_CONFIG = {
+  sections: {
+    '3c57e6952ac08188a12ded05daafd9b0': { name: 'Start Here', lessons: ['3c57e6952ac08164a27ede49dbd77af6','3c57e6952ac081839cceda527ad93a88','3c67e6952ac0815a9905ebe917b8a3d9'] },
+    '3c67e6952ac081338895c5bc6c828936': { name: 'CRM Training', lessons: ['3c67e6952ac081da9c68f79ddf687ae7','3c67e6952ac081ecbc6fd3e113775d77','3c67e6952ac081048cabd33ba24d2add','3c67e6952ac081a598ead6bb42622600','3c67e6952ac08172bfead721a0f7094a','3c67e6952ac081c4b055d0887371942e'] },
+    '3c57e6952ac081909087eab40414ed22': { name: 'Lead Management', lessons: ['3c57e6952ac08150ae0fe395851c6661','3c57e6952ac081ad9ea7f53584727f03','3c67e6952ac0819a97d1e697204d87c3','3c67e6952ac08195a897d8e060c46dab','3c67e6952ac081c5ad36d7600665df81'] },
+    '3c67e6952ac08123ba30e1a4f4f67447': { name: 'Mobile Training', lessons: ['3c67e6952ac0810c9cb0fa0ca0da88ff','3c67e6952ac0815384b3f94bd48b66f9','3c67e6952ac0810dbd7ad5a9a05ac2ec','3c67e6952ac081c19ae9cf05b3309f20','3c67e6952ac081658a1ec32e6292c998'] },
+    '3c67e6952ac08164b0dcf7f15c51d5b6': { name: 'Help Center & Support', lessons: ['3c67e6952ac08119bd7bc0be8528a9b8','3c67e6952ac081bfa1cdda8deb8d92b5','3c67e6952ac0815e9ae9ea2388b04796','3c67e6952ac081a7bf7ddbf835934642'] }
+  },
+  lessonNames: {
+    '3c57e6952ac08164a27ede49dbd77af6':'Welcome to Your CRM','3c57e6952ac081839cceda527ad93a88':'How Your Lead System Works','3c67e6952ac0815a9905ebe917b8a3d9':'Your Daily Workflow','3c67e6952ac081da9c68f79ddf687ae7':'CRM Overview','3c67e6952ac081ecbc6fd3e113775d77':'Contacts','3c67e6952ac081048cabd33ba24d2add':'Opportunities/Pipeline','3c67e6952ac081a598ead6bb42622600':'Conversations','3c67e6952ac08172bfead721a0f7094a':'Calendar/Appointments','3c67e6952ac081c4b055d0887371942e':'Adding Users','3c57e6952ac08150ae0fe395851c6661':'How Leads Work','3c57e6952ac081ad9ea7f53584727f03':'Calling Leads','3c67e6952ac0819a97d1e697204d87c3':'Logging Call Outcomes','3c67e6952ac08195a897d8e060c46dab':'Following Up','3c67e6952ac081c5ad36d7600665df81':'Booking Appointments','3c67e6952ac0810c9cb0fa0ca0da88ff':'Mobile App Setup','3c67e6952ac0815384b3f94bd48b66f9':'Mobile Notifications','3c67e6952ac0810dbd7ad5a9a05ac2ec':'Calling From Mobile','3c67e6952ac081c19ae9cf05b3309f20':'Messaging From Mobile','3c67e6952ac081658a1ec32e6292c998':'Calendar From Mobile','3c67e6952ac08119bd7bc0be8528a9b8':'Best Practices','3c67e6952ac081bfa1cdda8deb8d92b5':'Common Mistakes','3c67e6952ac0815e9ae9ea2388b04796':'Frequently Asked Questions','3c67e6952ac081a7bf7ddbf835934642':'Getting Support'
+  }
+};
