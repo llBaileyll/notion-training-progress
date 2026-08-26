@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - '.github/workflows/sync-notion.yml'
+      - 'scripts/sync_notion.py'
+      - 'index.html'
 
 permissions:
   contents: write
