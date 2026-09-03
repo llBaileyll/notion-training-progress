@@ -12,20 +12,27 @@
 </head>
 <body>
 <div id="app"></div>
-<script src="progress-config.js"></script>
 <script>
+const configScript=document.createElement('script');
+configScript.src='progress-config.js?v='+Date.now();
+configScript.onload=init;
+configScript.onerror=()=>{document.getElementById('app').innerHTML='<div class="error">Could not load training configuration.</div>'};
+document.head.appendChild(configScript);
+function init(){
 const NS='mindly-training-progress:v1';
 const cfg=window.TRAINING_CONFIG||{sections:{},lessonNames:{}};
 const sections=cfg.sections||{},lessonNames=cfg.lessonNames||{};
+const app=document.getElementById('app');
 function key(id){return `${NS}:lesson:${id}`}
 function isDone(id){return localStorage.getItem(key(id))==='1'}
 function setDone(id,v){v?localStorage.setItem(key(id),'1'):localStorage.removeItem(key(id));window.dispatchEvent(new CustomEvent('mindly-progress-change'))}
 function stats(s){const complete=(s.lessons||[]).filter(isDone).length,total=(s.lessons||[]).length,pct=total?Math.round(complete/total*100):0;return{complete,total,pct}}
-function lessonCard(id){const done=isDone(id);app.innerHTML=`<div class="card ${done?'completed':''}"><div class="row"><div><div class="title">${done?'✓ Lesson completed':'Finished this lesson?'}</div><div class="sub">${done?'Your progress is saved on this browser.':'Mark it complete to save your progress on this browser.'}</div></div><button class="btn ${done?'done':''}" id="toggle">${done?'<span class="check">✓</span> Completed':'Mark as complete'}</button></div></div>`;toggle.onclick=()=>{setDone(id,!isDone(id));lessonCard(id)}}
+function lessonCard(id){const done=isDone(id);app.innerHTML=`<div class="card ${done?'completed':''}"><div class="row"><div><div class="title">${done?'✓ Lesson completed':'Finished this lesson?'}</div><div class="sub">${done?'Your progress is saved on this browser.':'Mark it complete to save your progress on this browser.'}</div></div><button class="btn ${done?'done':''}" id="toggle">${done?'<span class="check">✓</span> Completed':'Mark as complete'}</button></div></div>`;document.getElementById('toggle').onclick=()=>{setDone(id,!isDone(id));lessonCard(id)}}
 function sectionCard(id){const s=sections[id];if(!s){app.innerHTML='<div class="error">Unknown section.</div>';return}const x=stats(s);app.innerHTML=`<div class="card"><div class="progressHead"><div class="title">${s.name}</div><div class="progressMeta">${x.complete} / ${x.total} completed · ${x.pct}%</div></div><div class="track"><div class="fill" style="width:${x.pct}%"></div></div></div>`}
 function overallCard(){const all=[...new Set(Object.values(sections).flatMap(s=>s.lessons||[]))],complete=all.filter(isDone).length,total=all.length,pct=total?Math.round(complete/total*100):0;app.innerHTML=`<div class="card"><div class="progressHead"><div><div class="title">Your training progress</div><div class="sub">Progress is saved on this browser and device.</div></div><div class="progressMeta">${complete} / ${total} completed · ${pct}%</div></div><div class="track"><div class="fill" style="width:${pct}%"></div></div></div>`}
 function libraryCard(){app.innerHTML='<div class="library">'+Object.values(sections).map(s=>{const x=stats(s);return `<div class="card"><div class="progressHead"><div class="title">${s.name}</div><div class="progressMeta">${x.complete} / ${x.total} · ${x.pct}%</div></div><div class="track"><div class="fill" style="width:${x.pct}%"></div></div></div>`}).join('')+'</div>'}
-const q=new URLSearchParams(location.search),type=q.get('type')||'lesson',id=(q.get('id')||'').replace(/-/g,'');if(q.get('compact')==='1')document.body.classList.add('compact');function render(){if(type==='lesson'&&id)lessonCard(id);else if(type==='section'&&id)sectionCard(id);else if(type==='overall')overallCard();else if(type==='library')libraryCard();else app.innerHTML='<div class="error">Widget configuration missing.</div>'}render();window.addEventListener('storage',render);window.addEventListener('mindly-progress-change',render);
+const q=new URLSearchParams(location.search),type=q.get('type')||'lesson',id=(q.get('id')||'').replace(/-/g,'');if(q.get('compact')==='1')document.body.classList.add('compact');function render(){if(type==='lesson'&&id)lessonCard(id);else if(type==='section'&&id)sectionCard(id);else if(type==='overall')overallCard();else if(type==='library')libraryCard();else app.innerHTML='<div class="error">Widget configuration missing.</div>'}render();window.addEventListener('storage',render);window.addEventListener('mindly-progress-change',render);if(type!=='lesson')setInterval(render,1000);
+}
 </script>
 </body>
 </html>
