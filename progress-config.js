@@ -3,6 +3,7 @@ window.TRAINING_CONFIG = {
     "3c57e6952ac08188a12ded05daafd9b0": {
       "name": "Start Here",
       "lessons": [
+        "3d07e6952ac081e49771eb4ee3b78015",
         "3c57e6952ac08164a27ede49dbd77af6",
         "3c57e6952ac081839cceda527ad93a88",
         "3c67e6952ac0815a9905ebe917b8a3d9"
@@ -50,6 +51,7 @@ window.TRAINING_CONFIG = {
     }
   },
   "lessonNames": {
+    "3d07e6952ac081e49771eb4ee3b78015": "Portal Training Video",
     "3c67e6952ac081048cabd33ba24d2add": "Opportunities/Pipeline",
     "3c67e6952ac0810c9cb0fa0ca0da88ff": "Mobile App Setup",
     "3c67e6952ac0810dbd7ad5a9a05ac2ec": "Calling From Mobile",
